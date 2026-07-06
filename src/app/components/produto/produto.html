@@ -1,4 +1,15 @@
-<div>
+<!-- Cria uma div para exibir as informações do produto -->
+
+<!--<div>
   <h2>Produto: {{ produto }}</h2>
-  <p>Preço: {{ valor }}</p>
+  <h3>Preço: R$ {{ valor }}</h3>
+</div>-->
+
+<div>
+  @if (mostrarProduto) {
+    <h2>Produto: {{ produto }}</h2>
+  }
+  @if (mostrarValor) {
+    <h3>Preço: R$ {{ valor }}</h3>
+  }
 </div>
