@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { Produto } from './components/produto/produto';
+import { Produto } from './components/produto/produto.component';
 
 @Component({
   selector: 'app-root',

@@ -1,4 +1,4 @@
-import { MeuPipePipe } from './meu-pipe-pipe';
+import { MeuPipePipe } from './meu-pipe';
 
 describe('MeuPipePipe', () => {
   it('create an instance', () => {

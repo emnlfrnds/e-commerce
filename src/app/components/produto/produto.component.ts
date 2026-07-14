@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CurrencyPipe, UpperCasePipe } from '@angular/common';
-import { MeuPipePipe } from '../../meu-pipe-pipe';
+import { MeuPipePipe } from '../../pipes/meu-pipe';
 
 @Component({
   selector: 'app-produto',
