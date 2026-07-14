@@ -5,11 +5,26 @@
   <h3>Preço: R$ {{ valor }}</h3>
 </div>-->
 
-<div>
+<!-- <div>
   @if (mostrarProduto) {
     <h2>Produto: {{ produto }}</h2>
   }
   @if (mostrarValor) {
     <h3>Preço: R$ {{ valor }}</h3>
+  }
+</div> -->
+
+<div>
+  @for(p of produtos; track p) {
+    <div>
+        <h3>
+          @if (mostrarProduto) {
+          Produto {{p.produto.toUpperCase()}}}
+        </h3>
+        <p>
+          @if (mostrarValor) {
+          {{p.valor | currency: 'BRL'}}}
+        </p>
+    </div>
   }
 </div>
