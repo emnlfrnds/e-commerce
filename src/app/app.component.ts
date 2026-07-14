@@ -4,8 +4,8 @@ import { Produto } from './components/produto/produto.component';
 @Component({
   selector: 'app-root',
   imports: [Produto],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
 })
 export class App {
   protected readonly title = signal('e-commerce');

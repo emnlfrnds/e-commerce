@@ -5,8 +5,8 @@ import { MeuPipePipe } from '../../pipes/meu-pipe';
 @Component({
   selector: 'app-produto',
   imports: [UpperCasePipe, CurrencyPipe, MeuPipePipe],
-  templateUrl: './produto.html',
-  styleUrl: './produto.css',
+  templateUrl: './produto.component.html',
+  styleUrl: './produto.component.css',
 })
 export class Produto
 {
