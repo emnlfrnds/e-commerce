@@ -1,20 +1,15 @@
 import { Component } from '@angular/core';
 import { CurrencyPipe, UpperCasePipe } from '@angular/common';
-import { MeuPipePipe } from '../../pipes/meu-pipe';
+import { valorFormatadoPipe } from '../../pipes/pipe';
 
 @Component({
   selector: 'app-produto',
-  imports: [UpperCasePipe, CurrencyPipe, MeuPipePipe],
+  imports: [UpperCasePipe, CurrencyPipe, valorFormatadoPipe],
   templateUrl: './produto.component.html',
   styleUrl: './produto.component.css',
 })
 export class Produto
 {
-  // produto = "Monitor";
-  // valor = 900;
-  // mostrarProduto = true;
-  // mostrarValor = true;
-
   mostrarValor = true;
   mostrarProduto = true;
   produtos = [

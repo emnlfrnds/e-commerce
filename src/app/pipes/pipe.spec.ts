@@ -1,8 +1,8 @@
-import { MeuPipePipe } from './meu-pipe';
+import { valorFormatadoPipe } from './pipe';
 
 describe('MeuPipePipe', () => {
   it('create an instance', () => {
-    const pipe = new MeuPipePipe();
+    const pipe = new valorFormatadoPipe();
     expect(pipe).toBeTruthy();
   });
 });
