@@ -1,14 +1,8 @@
-<div>
-  @for(p of produtos; track p) {
-    <div>
-        <h3>
-          @if (mostrarProduto) {
-          Produto {{p.produto.toUpperCase()}}}
-        </h3>
-        <p>
-          @if (mostrarValor) {
-          {{p.valor | currency: 'BRL'}}}
-        </p>
-    </div>
-  }
+<div class = "produto">
+    <h3>
+      {{ nome | uppercase }}
+    </h3>
+    <p>
+      {{ valor | valorFormatado}}
+    </p>
 </div>
