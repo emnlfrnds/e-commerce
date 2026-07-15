@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { UpperCasePipe } from '@angular/common';
 import { valorFormatadoPipe } from '../../pipes/pipe';
 
@@ -11,6 +11,16 @@ import { valorFormatadoPipe } from '../../pipes/pipe';
 
 export class Produto
 {
+
+  // Entrada de dados -> lista-produtos.component.ts
   @Input() nome: string = '';
   @Input() valor: number = 0;
+
+  // Saída de dados de produtos selecionados -> lista-produtos.component.ts
+  @Output() produtoSelecionado = new EventEmitter<string>();
+
+  selecionarProduto() {
+    this.produtoSelecionado.emit(this.nome);
+  }
+
 }

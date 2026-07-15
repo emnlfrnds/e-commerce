@@ -1,7 +1,8 @@
 @for (p of produtos; track p) {
   <app-produto
-  [nome] = "p.nome";
+  [nome] = "p.nome"
   [valor]= "p.valor"
+  (produtoSelecionado)="exibirProduto($event)"
   >
   </app-produto>
 }

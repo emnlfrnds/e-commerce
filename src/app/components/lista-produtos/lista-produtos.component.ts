@@ -9,10 +9,24 @@ import { Produto } from '../produto/produto.component';
 })
 export class ListaProdutos {
   produtos = [
-    {nome: 'Teclado Gamer', valor: 127.90},
-    {nome: 'Mouse Gamer', valor: 69.90},
-    {nome: 'Mousepad Gamer', valor: 25.90},
-    {nome: 'Headset Gamer', valor: 259.99},
-    {nome: 'Controle Xbox', valor: 368.00}
+    {
+      nome: 'Teclado Gamer',
+      valor: 127.90},
+    {
+      nome: 'Mouse Gamer',
+      valor: 69.90},
+    {
+      nome: 'Mousepad Gamer',
+      valor: 25.90},
+    {
+      nome: 'Headset Gamer',
+      valor: 259.99},
+    {
+      nome: 'Controle Xbox',
+      valor: 368.00},
   ];
+
+  exibirProduto(nome: string) {
+    console.log ('Produto Selecionado: ', nome);
+  }
 }
