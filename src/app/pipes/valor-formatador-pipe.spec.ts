@@ -1,4 +1,4 @@
-import { valorFormatadoPipe } from './pipe';
+import { valorFormatadoPipe } from './valor-formatado-pipe';
 
 describe('pipe', () => {
   it('create an instance', () => {
