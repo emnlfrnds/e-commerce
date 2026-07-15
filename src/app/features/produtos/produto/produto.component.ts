@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { UpperCasePipe } from '@angular/common';
-import { valorFormatadoPipe } from '../../pipes/valor-formatado-pipe';
+import { valorFormatadoPipe } from '../../../shared/pipes/valor-formatado-pipe';
 
 @Component({
   selector: 'app-produto',
