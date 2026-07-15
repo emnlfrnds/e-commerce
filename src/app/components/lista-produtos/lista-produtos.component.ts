@@ -9,8 +9,10 @@ import { Produto } from '../produto/produto.component';
 })
 export class ListaProdutos {
   produtos = [
-    {nome: 'Mouse', valor: 19.90},
-    {nome: 'Teclado', valor: 47.80},
-    {nome: 'Monitor', valor: 259.99},
+    {nome: 'Teclado Gamer', valor: 127.90},
+    {nome: 'Mouse Gamer', valor: 69.90},
+    {nome: 'Mousepad Gamer', valor: 25.90},
+    {nome: 'Headset Gamer', valor: 259.99},
+    {nome: 'Controle Xbox', valor: 368.00}
   ];
 }
