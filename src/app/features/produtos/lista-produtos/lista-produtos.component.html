@@ -1,10 +1,16 @@
-@for (p of produtos(); track p) {
-  <app-produto
-  [nome] = "p.nome"
-  [valor]= "p.valor"
-  (produtoSelecionado)="exibirProduto($event)"
-  >
-  </app-produto>
-}
+<div>
+  @for (p of produtos(); track p) {
+    <app-produto
+    [nome] = "p.nome"
+    [valor]= "p.valor"
+    (produtoSelecionado)="exibirProduto($event)"
+    >
+    </app-produto>
+  }
 
-<p><button (click)="adicionarProduto()">Adicionar Produto</button></p>
+  <h2>Total de produtos: {{ totalProdutos() }}</h2>
+  <h2>Preço total: {{ valorTotal() | valorFormatado }} lulacoins</h2>
+  <h2><button (click)="adicionarProduto()">Adicionar Produto</button></h2>
+  <h2><button (click)="substituirProdutos()">Substituir Produtos</button></h2>
+
+</div>

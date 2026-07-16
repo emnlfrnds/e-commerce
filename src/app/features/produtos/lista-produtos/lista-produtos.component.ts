@@ -1,9 +1,10 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, computed } from '@angular/core';
 import { Produto } from '../produto/produto.component';
+import { valorFormatadoPipe } from '../../../shared/pipes/valor-formatado-pipe';
 
 @Component({
   selector: 'app-lista-produtos',
-  imports: [Produto],
+  imports: [Produto, valorFormatadoPipe],
   templateUrl: './lista-produtos.component.html',
   styleUrl: './lista-produtos.component.css',
 })
@@ -36,4 +37,13 @@ export class ListaProdutos {
     ]);
   }
 
+  totalProdutos = computed(() => this.produtos().length);
+
+  valorTotal = computed(() => { return this.produtos().reduce((total, item) => total + item.valor, 0)});
+
+  substituirProdutos() {
+    this.produtos.set([
+      {nome: 'Arroz Fazenda', valor: 2.49},
+    ]);
+  }
 }
