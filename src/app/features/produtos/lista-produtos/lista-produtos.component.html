@@ -1,4 +1,4 @@
-@for (p of produtos; track p) {
+@for (p of produtos(); track p) {
   <app-produto
   [nome] = "p.nome"
   [valor]= "p.valor"
@@ -6,3 +6,5 @@
   >
   </app-produto>
 }
+
+<p><button (click)="adicionarProduto()">Adicionar Produto</button></p>
