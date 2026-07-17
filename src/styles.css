@@ -1,16 +1,24 @@
 /* Formatação -> Produto */
 
+body {
+  background-color: black;
+}
+
 div
 {
-  padding-left: 50px;
+  color: white;
   font-family: 'Courier New', monospace;
   font-size: large;
+
+  padding-left: 50px;
 }
 
 /* Formatação -> App */
 
 h1 {
+  color: white;
   font-family: 'Courier New', monospace;
+
   padding-top: 25px;
   padding-left: 50px;
 }
