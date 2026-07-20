@@ -49,19 +49,19 @@ export class ListaProdutos {
     ]);
   }
 
-construtor() {
-  effect(() => {
-    console.log("Lista de Produtos Alterados: ", this.produtos());
-  });
-  effect(() => {
-    console.log("Valor total atualizado: ", this.valorTotal());
-  });
-  effect(() => {
-    if (typeof document !== "undefined") {
-        document.title = `(${this.totalProdutos()}) Minha Loja`;
-    }
-  });
-}
+  construtor() {
+    effect(() => {
+      console.log("Lista de Produtos Alterados: ", this.produtos());
+    });
+    effect(() => {
+      console.log("Valor total atualizado: ", this.valorTotal());
+    });
+    effect(() => {
+      if (typeof document !== "undefined") {
+          document.title = `(${this.totalProdutos()}) Minha Loja`;
+      }
+    });
+  }
 
   produtoSelecionado = signal <string | null> (null);
 
