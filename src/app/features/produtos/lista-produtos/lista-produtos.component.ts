@@ -33,21 +33,24 @@ export class ListaProdutos {
     console.log ('Produto Selecionado: ', nome);
   }
 
+  // Funcionalidades
+
   adicionarProduto() {
     this.produtos.update(ListaAtual => [
       ...ListaAtual, {nome: 'Sony Playstation 5', valor: 7599}
     ]);
   }
 
-  totalProdutos = computed(() => this.produtos().length);
-
-  valorTotal = computed(() => { return this.produtos().reduce((total, item) => total + item.valor, 0)});
-
   substituirProdutos() {
     this.produtos.set([
       {nome: 'Arroz Fazenda', valor: 2.49},
     ]);
   }
+
+  // Informações
+
+  totalProdutos = computed(() => this.produtos().length);
+  valorTotal = computed(() => { return this.produtos().reduce((total, item) => total + item.valor, 0)});
 
   construtor() {
     effect(() => {
@@ -62,6 +65,8 @@ export class ListaProdutos {
       }
     });
   }
+
+
 
   produtoSelecionado = signal <string | null> (null);
 

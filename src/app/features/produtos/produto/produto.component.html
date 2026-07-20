@@ -1,13 +1,9 @@
-<div class = "produto">
-    <h3>
-      {{ nome | uppercase }}
-    </h3>
-    <p>
-      {{ valor | valorFormatado}}
-    </p>
-    <button
-    (click)="selecionarProduto()"
-    >
-      Selecionar {{ nome }}
-    </button>
+<div class="produtos">
+  <h3>
+    {{ nome | uppercase }}
+  </h3>
+  <p>
+    {{ valor | valorFormatado }}
+  </p>
+  <!-- <button (click)="selecionarProduto()">Selecionar {{ nome }}</button> -->
 </div>
