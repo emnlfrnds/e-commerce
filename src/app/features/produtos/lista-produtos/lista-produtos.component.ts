@@ -2,13 +2,11 @@ import { Component, signal, computed, effect } from '@angular/core';
 import { Produto } from '../produto/produto.component';
 import { UpperCasePipe } from '@angular/common';
 import { valorFormatadoPipe } from '../../../shared/pipes/valor-formatado-pipe';
-import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-lista-produtos',
   imports: [Produto, valorFormatadoPipe, UpperCasePipe],
-  templateUrl: './lista-produtos.component.html',
-  styleUrl: './lista-produtos.component.css',
+  templateUrl: './lista-produtos.component.html'
 })
 export class ListaProdutos {
   produtos = signal([
@@ -66,8 +64,6 @@ export class ListaProdutos {
     });
   }
 
-
-
   produtoSelecionado = signal <string | null> (null);
 
   carrinho = signal <{nome: string; valor: number}[]>([]);
@@ -79,9 +75,4 @@ export class ListaProdutos {
   adicionarAoCarrinho (produto: {nome: string; valor: number}) {
     this.carrinho.update(listaAtual => [...listaAtual, produto]);
   }
-
-  removeTodosProdutos() {
-    this.produtos.set([])
-  }
-
 }
