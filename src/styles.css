@@ -7,6 +7,7 @@ body {
 }
 
 a {
+  transition: 0.5s;
   color: #485696;
   text-decoration: none;
 }
@@ -17,7 +18,9 @@ a:hover {
   transition: .5s;
 }
 
-.index {
+/* ======================================================= */
+
+.app-index {
   background-color: #E7E7E7;
   padding: 25px;
   border-radius: 20px;
@@ -25,35 +28,52 @@ a:hover {
 
 /* Produtos */
 
-.produtos {
-  background-color: #7CC6FE;
+.produtos-comp {
+  box-shadow: 1px 1px 5px #000000;
   padding: 10px;
   width: 200px;
   border-radius: 10px;
   text-align: center;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 /* Página */
 
-.pag-container {
+.pag-listaprodutos {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 30px;
 }
 
 .lista-produtos {
   display: flex;
   flex-direction: column;
-  gap: 15px;
 }
 
-.carrinho {
-  width: 500px;
-  margin-top: 15px;
+.lista-produtos button#btnAddAoCarrinho {
+  transition: 0.5s;
+  width: 220px;
+  padding: 5px;
+  margin-bottom: 25px;
+  color: #485696;
+  font-family: 'Courier New', monospace;
+  font-size: medium;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px #000000;
+}
+
+.lista-produtos button#btnAddAoCarrinho:hover {
+  transition: 0.5s;
+  background-color: black;
+  color: #E7E7E7;
+}
+
+.pag-lp-carrinho {
+  width: 400px;
   padding: 10px;
+  border-radius: 10px;
   box-shadow: 1px 1px 5px #000000;
 }
