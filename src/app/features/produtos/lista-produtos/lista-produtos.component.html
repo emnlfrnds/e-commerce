@@ -1,26 +1,24 @@
-<div class="pag-container">
+<div class="pag-listaprodutos">
   <div class="lista-produtos">
     @for (p of produtos(); track p) {
       <!-- (produtoSelecionado)="exibirProduto($event)"> [ Ao final de app-produto ] -->
       <app-produto [nome]="p.nome" [valor]="p.valor"></app-produto>
-      <h2><button (click)="adicionarAoCarrinho(p)">Adicionar ao Carrinho</button></h2>
+      <h2><button id="btnAddAoCarrinho" (click)="adicionarAoCarrinho(p)">Adicionar {{ p.nome }} ao Carrinho</button></h2>
     }
   </div>
-  <aside class="carrinho">
+  <aside class="pag-lp-carrinho">
     <h2>Total de produtos: {{ totalProdutos() }}</h2>
     <h2>Preço total: {{ valorTotal() | valorFormatado }} lulacoins</h2>
     <!-- <h2><button (click)="adicionarProduto()">Adicionar Produto</button></h2> -->
     <!-- <h2><button (click)="substituirProdutos()">Substituir Produtos</button></h2> -->
     <hr />
-    <div class="historico-carrinho">
+    <div>
       <h2>Carrinho</h2>
       @for (p of carrinho(); track $index) {
         <p>{{ p.nome | uppercase }} - {{ p.valor | valorFormatado }}</p>
       }
-      <p><button (click)="removeTodosProdutos()">Remover Produtos</button></p>
       <p><strong>Itens no carrinho: </strong>{{ quantidadeCarrinho() }}</p>
       <p><strong>Valor total do carrinho: </strong>{{ totalCarrinho() | valorFormatado }}</p>
     </div>
   </aside>
-  <!-- <button (click)="removeTodosProdutos()">Remover todos os produtos</button> -->
 </div>
