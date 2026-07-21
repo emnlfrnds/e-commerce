@@ -5,13 +5,11 @@ import { valorFormatadoPipe } from '../../../shared/pipes/valor-formatado-pipe';
 @Component({
   selector: 'app-produto',
   imports: [UpperCasePipe, valorFormatadoPipe],
-  templateUrl: './produto.component.html',
-  styleUrl: './produto.component.css',
+  templateUrl: './produto.component.html'
 })
 
 export class Produto
 {
-
   // Entrada de dados -> lista-produtos.component.ts
   @Input() nome: string = '';
   @Input() valor: number = 0;
@@ -19,8 +17,7 @@ export class Produto
   // Saída de dados de produtos selecionados -> lista-produtos.component.ts
   @Output() produtoSelecionado = new EventEmitter<string>();
 
-  selecionarProduto() {
-    this.produtoSelecionado.emit(this.nome);
-  }
-
+  // selecionarProduto() {
+  //   this.produtoSelecionado.emit(this.nome);
+  // }
 }
