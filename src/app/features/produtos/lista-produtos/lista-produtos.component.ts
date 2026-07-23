@@ -1,8 +1,11 @@
-import { Component, signal, computed, effect } from '@angular/core';
-import { Produto } from '../produto/produto.component';
+import { Component, signal, computed, effect, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 import { UpperCasePipe } from '@angular/common';
 import { valorFormatadoPipe } from '../../../shared/pipes/valor-formatado-pipe';
-import { HttpClient } from '@angular/common/http';
+
+import { Produto } from '../produto/produto.component';
+import { produtosService } from '../../produtos.service';
 
 @Component({
   selector: 'app-lista-produtos',
@@ -12,34 +15,64 @@ import { HttpClient } from '@angular/common/http';
 
 export class ListaProdutos {
 
+  //? Signals
+
   produtos = signal<{ nome: string; valor: number }[]>([]);
+
+  produtoSelecionado = signal<string | null>(null);
+
+  carrinho = signal<{ nome: string; valor: number }[]>([]);
+
   carregando = signal(true);
 
-  carregarProdutos() {
-    this.carregando.set(true);
-    this.http.get<
-      { title: string; valor: number }[]
-    >
-      ('https://fakstore.com/products')
-      .subscribe({
-        next: (dados) => {
-          const produtosFormatados = dados.map(p => ({
-            nome: p.title, valor: p.valor
-          }));
-          this.produtos.set(produtosFormatados);
-          this.carregando.set(false);
-        },
-        error: (e) => {
-          console.error('Erro ao carregar produtos: ', e);
-          this.carregando.set(false);
-        }
-      })
+  //? Computed
+
+  totalProdutos = computed(() => this.produtos().length);
+  valorTotal = computed(() => { return this.produtos().reduce((total, item) => total + item.valor, 0) });
+  quantidadeCarrinho = computed(() => this.carrinho().length);
+  totalCarrinho = computed(() => { return this.carrinho().reduce((total, item) => total + item.valor, 0) });
+
+  //? Construtor
+
+  constructor(private http: HttpClient) {
+    this.carregarProdutos();
+
+    effect(() => {
+      console.log("Lista de Produtos alterada: ", this.produtos());
+    });
+    effect(() => {
+      console.log("Valor total atualizado: ", this.valorTotal());
+    });
+    effect(() => {
+      if (typeof document !== "undefined") {
+        document.title = `(${this.totalProdutos()}) Minha Loja`;
+      }
+    });
   }
 
-  // Funcionalidades
+  //! Método Http (API)
+
+  carregarProdutos() {
+
+    this.carregando.set ( true );
+
+    this.produtosService.buscarProdutos().subscribe({
+      next: (dados) => {
+        const produtos = this.produtosService.transformarProdutos(dados);
+        this.produtos.set(produtos);
+        this.carregando.set(false);
+      },
+      error: (e) => {
+        console.error("Erro ao carregar os produtos: ", e);
+        this.carregando.set(false);
+      }
+    });
+  }
+
+  //? Métodos Existentes
 
   exibirProduto(nome: string) {
-    console.log('Produto Selecionado: ', nome);
+    this.produtoSelecionado.set(nome);
   }
 
   adicionarProduto() {
@@ -54,37 +87,12 @@ export class ListaProdutos {
     ]);
   }
 
-  // Informações
-
-  totalProdutos = computed(() => this.produtos().length);
-  valorTotal = computed(() => { return this.produtos().reduce((total, item) => total + item.valor, 0) });
-
-  constructor(private http: HttpClient) {
-
-    this.carregarProdutos();
-
-    effect(() => {
-      console.log("Lista de Produtos Alterados: ", this.produtos());
-    });
-    effect(() => {
-      console.log("Valor total atualizado: ", this.valorTotal());
-    });
-    effect(() => {
-      if (typeof document !== "undefined") {
-        document.title = `(${this.totalProdutos()}) Minha Loja`;
-      }
-    });
-  }
-
-  produtoSelecionado = signal<string | null>(null);
-
-  carrinho = signal<{ nome: string; valor: number }[]>([]);
-
-  quantidadeCarrinho = computed(() => this.carrinho().length);
-
-  totalCarrinho = computed(() => { return this.carrinho().reduce((total, item) => total + item.valor, 0) });
-
   adicionarAoCarrinho(produto: { nome: string; valor: number }) {
     this.carrinho.update(listaAtual => [...listaAtual, produto]);
   }
+
+  //* Inject
+
+  private produtosService = inject(produtosService);
+
 }
