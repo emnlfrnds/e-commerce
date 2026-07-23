@@ -30,13 +30,28 @@ a:hover {
 
 .produtos-comp {
   box-shadow: 1px 1px 5px #000000;
-  padding: 10px;
-  width: 200px;
+  padding: 5px;
+  width: 290px;
   border-radius: 10px;
   text-align: center;
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+}
+
+.produtos-comp h3#nome {
+  margin-bottom: 0;
+}
+
+.produtos-comp h3#preco {
+  padding: 5px;
+  width: fit-content;
+  border-radius: 10px;
+  text-align: center;
+
+  background-color: #485696;
+  color: #E7E7E7;
 }
 
 /* Página */
@@ -54,19 +69,23 @@ a:hover {
 
 .lista-produtos button#btnAddAoCarrinho {
   transition: 0.5s;
-  width: 220px;
+
   padding: 5px;
-  margin-bottom: 25px;
-  color: #485696;
+  width: 300px;
+  margin-bottom: 30px;
+
   font-family: 'Courier New', monospace;
   font-size: medium;
+
   border: none;
   border-radius: 5px;
   box-shadow: 1px 1px 5px #000000;
+  color: #485696;
 }
 
 .lista-produtos button#btnAddAoCarrinho:hover {
   transition: 0.5s;
+  padding: 10px;
   background-color: black;
   color: #E7E7E7;
 }
