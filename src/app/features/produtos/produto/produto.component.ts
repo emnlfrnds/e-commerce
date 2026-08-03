@@ -16,8 +16,19 @@ export class Produto
 
   // Saída de dados de produtos selecionados -> lista-produtos.component.ts
   @Output() produtoSelecionado = new EventEmitter<string>();
+  @Output() produtoAdicionado = new EventEmitter<{
+    nome: string;
+    valor: number;
+  }>();
 
-  // selecionarProduto() {
-  //   this.produtoSelecionado.emit(this.nome);
-  // }
+  selecionarProduto() {
+    this.produtoSelecionado.emit(this.nome);
+  }
+
+  adicionarAoCarrinho() {
+    this.produtoAdicionado.emit({
+      nome: this.nome,
+      valor: this.valor
+    })
+  }
 }

@@ -4,14 +4,24 @@
       <p>Carregando produtos...</p>
     }
 
-    @if (!carregando()) {
+    @if (erro()) {
+      <p style="color: red;">
+        {{ erro() }}
+      </p>
+      <button (click)="carregarProdutos()">Tentar novamente</button>
+    }
+
+    @if (!carregando() && !erro()) {
       @for (p of produtos(); track p.nome) {
-        <app-produto [nome]="p.nome" [valor]="p.valor"></app-produto>
-        <h2>
+        <app-produto
+        [nome]="p.nome"
+        [valor]="p.valor"
+        ></app-produto>
+        <!-- <h2>
           <button id="btnAddAoCarrinho" (click)="adicionarAoCarrinho(p)">
             Adicionar {{ p.nome }} ao Carrinho
           </button>
-        </h2>
+        </h2> -->
       }
     }
   </div>

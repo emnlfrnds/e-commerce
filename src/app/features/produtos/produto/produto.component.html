@@ -5,5 +5,10 @@
   <h3 id="preco">
     {{ valor | valorFormatado }}
   </h3>
+  <h2>
+    <button id="btnAddAoCarrinho" (click)="adicionarAoCarrinho()">
+      Adicionar {{ nome }} ao Carrinho
+    </button>
+  </h2>
   <!-- <button (click)="selecionarProduto()">Selecionar {{ nome }}</button> -->
 </div>

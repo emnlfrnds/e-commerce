@@ -23,6 +23,8 @@ export class ListaProdutos {
 
   carrinho = signal<{ nome: string; valor: number }[]>([]);
 
+  erro = signal<string | null>(null);
+
   carregando = signal(true);
 
   //? Computed
@@ -53,6 +55,7 @@ export class ListaProdutos {
   //! Método Http (API)
 
   carregarProdutos() {
+    this.erro.set(null);
 
     this.carregando.set ( true );
 
@@ -64,6 +67,7 @@ export class ListaProdutos {
       },
       error: (e) => {
         console.error("Erro ao carregar os produtos: ", e);
+        this.erro.set('Erro ao carregar produtos. Verifique sua conexão e tente novamente.');
         this.carregando.set(false);
       }
     });
