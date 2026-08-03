@@ -73,7 +73,7 @@ a:hover {
 
 .produtos-comp button#btnAddAoCarrinho:hover {
   transition: 0.5s;
-  padding: 20px;
+  padding: 10px;
   background-color: black;
   color: #E7E7E7;
 }

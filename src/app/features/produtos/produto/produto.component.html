@@ -6,9 +6,9 @@
     {{ valor | valorFormatado }}
   </h3>
   <h2>
-    <button id="btnAddAoCarrinho" (click)="adicionarAoCarrinho()">
-      Adicionar {{ nome }} ao Carrinho
-    </button>
+    <button  id="btnSelProduto" (click)="selecionarProduto()">Selecionar {{ nome }}</button>
   </h2>
-  <!-- <button (click)="selecionarProduto()">Selecionar {{ nome }}</button> -->
+  <h2>
+    <button id="btnAddAoCarrinho" (click)="adicionarAoCarrinho()" >Adicionar ao Carrinho</button>
+  </h2>
 </div>
