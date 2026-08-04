@@ -1,16 +1,12 @@
 <div>
-  <h1>{{ loja | uppercase }}</h1>
-  <nav>
-    <a routerLink="/">Home<br /></a>
-    <a routerLink="/produtos">Produtos<br /></a>
-    <a routerLink="/carrinho">Carrinho</a>
-  </nav>
-  <hr />
-
-  <button (click)="login()">Login</button>
-  <br />
-  <button (click)="logout()">Logout</button>
-  <p>Status: {{ usuarioLogado() ? 'Logado' : 'Deslogado' }}</p>
-
+  <app-header></app-header>
+  <main style="padding: 20px">
+    <section style="margin-bottom: 20px">
+      <button mat-flat-button (click)="login()">Login</button>
+      <br /><br />
+      <button mat-flat-button (click)="logout()">Logout</button>
+    </section>
+    <p>Status: {{ usuarioLogado() ? 'Logado' : 'Deslogado' }}</p>
+  </main>
   <router-outlet></router-outlet>
 </div>

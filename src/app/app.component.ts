@@ -1,16 +1,17 @@
 import { Component, signal } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { UpperCasePipe } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 import { usuarioLogado, login, logout } from './core/auth';
+import { MatAnchor } from "@angular/material/button";
+import { Header } from './shared/layout/header/header';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, UpperCasePipe],
+  imports: [RouterOutlet, MatAnchor, Header],
   templateUrl: './app.html'
 })
+
 export class App {
   protected readonly title = signal('e-commerce');
-  loja = "LOVI - Sua Loja Virtual!";
   usuarioLogado = usuarioLogado;
   login = login;
   logout = logout;

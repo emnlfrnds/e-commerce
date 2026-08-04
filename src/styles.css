@@ -18,21 +18,20 @@ a:hover {
   transition: .5s;
 }
 
-/* ======================================================= */
-
 .app-index {
   background-color: #E7E7E7;
   padding: 25px;
+  margin: 50px;
   border-radius: 20px;
 }
 
 /* Produtos */
 
-.produtos-comp {
+.produto-component {
   box-shadow: 1px 1px 5px #000000;
   padding: 5px;
   margin-bottom: 30px;
-  width: 290px;
+  width: 400px;
   border-radius: 10px;
   text-align: center;
 
@@ -41,11 +40,11 @@ a:hover {
   align-items: center;
 }
 
-.produtos-comp h3#nome {
+.produto-component h3#txtNome {
   margin-bottom: 0;
 }
 
-.produtos-comp h3#preco {
+.produto-component h3#txtValor {
   padding: 5px;
   width: fit-content;
   border-radius: 10px;
@@ -55,7 +54,7 @@ a:hover {
   color: #E7E7E7;
 }
 
-.produtos-comp button#btnAddAoCarrinho {
+.produto-component button#btnProdutoAddCarrinho {
   transition: 0.5s;
 
   padding: 5px;
@@ -71,27 +70,28 @@ a:hover {
   color: #485696;
 }
 
-.produtos-comp button#btnAddAoCarrinho:hover {
+.produto-component button#btnProdutoAddCarrinho:hover {
   transition: 0.5s;
   padding: 10px;
   background-color: black;
   color: #E7E7E7;
 }
 
+
 /* Página */
 
-.pag-listaprodutos {
+.lp-component {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 
-.lista-produtos {
+.lista-de-produtos {
   display: flex;
   flex-direction: column;
 }
 
-.pag-lp-carrinho {
+.lp-carrinho-lateral {
   width: 400px;
   padding: 10px;
   border-radius: 10px;
