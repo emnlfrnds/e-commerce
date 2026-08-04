@@ -1,10 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { UpperCasePipe } from '@angular/common';
 import { valorFormatadoPipe } from '../../../shared/pipes/valor-formatado-pipe';
+import { MatCardModule } from '@angular/material/card';
+import { MatAnchor } from "@angular/material/button";
 
 @Component({
   selector: 'app-produto',
-  imports: [UpperCasePipe, valorFormatadoPipe],
+  imports: [UpperCasePipe, valorFormatadoPipe, MatCardModule, MatAnchor],
   templateUrl: './produto.component.html'
 })
 
