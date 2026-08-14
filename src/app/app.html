@@ -1,12 +1,13 @@
-<div>
-  <app-header></app-header>
-  <main style="padding: 20px">
-    <section style="margin-bottom: 20px">
-      <button mat-flat-button (click)="login()">Login</button>
-      <br /><br />
-      <button mat-flat-button (click)="logout()">Logout</button>
-    </section>
-    <p>Status: {{ usuarioLogado() ? 'Logado' : 'Deslogado' }}</p>
-  </main>
+<app-header></app-header>
+
+<main class="container-principal">
+  <!-- Controle temporario de Login -->
+  <section class="bloco-controle">
+    <button (click)="login()">Login</button>
+    <button (click)="logout()">logout</button>
+    <p>Status: {{ usuarioLogado() ? 'Logado' : 'DesLogado' }}</p>
+  </section>
+
+  <!-- Rotas -->
   <router-outlet></router-outlet>
-</div>
+</main>

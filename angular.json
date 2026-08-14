@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "e-commerce": {
+    "lovi": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -24,7 +24,15 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/material-theme.scss", "src/styles.css"]
+            "styles": ["src/material-theme.scss", "src/styles.css"],
+            "server": "src/main.server.ts",
+            "outputMode": "server",
+            "security": {
+              "allowedHosts": []
+            },
+            "ssr": {
+              "entry": "src/server.ts"
+            }
           },
           "configurations": {
             "production": {
@@ -54,10 +62,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "e-commerce:build:production"
+              "buildTarget": "lovi:build:production"
             },
             "development": {
-              "buildTarget": "e-commerce:build:development"
+              "buildTarget": "lovi:build:development"
             }
           },
           "defaultConfiguration": "development"

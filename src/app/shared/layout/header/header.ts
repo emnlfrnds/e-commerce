@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink } from '@angular/router';
-import { MatAnchor } from "@angular/material/button";
+import { CarrinhoService } from '../../../core/services/carrinho.service';
 
 @Component({
   selector: 'app-header',
-  imports: [MatToolbarModule, RouterLink, MatAnchor],
+  imports: [MatToolbarModule, MatButtonModule, RouterLink],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-
 export class Header {
-  loja = "LOVI - Sua Loja Virtual!";
+  private carrinhoService = inject(CarrinhoService);
+  quantidade = this.carrinhoService.quantidade;
 }

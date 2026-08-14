@@ -1,8 +1,6 @@
 import { signal } from "@angular/core";
 
-export const usuarioLogado = signal (false);
-
-//* Permissão de acesso às rotas
+export const usuarioLogado = signal(false);
 
 export function login() {
   usuarioLogado.set(true);

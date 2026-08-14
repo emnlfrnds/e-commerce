@@ -1,0 +1,103 @@
+import { Component, signal, computed, effect, inject } from '@angular/core';
+import { ProdutosService } from '../../../core/services/produtos.service';
+import { CarrinhoService } from '../../../core/services/carrinho.service';
+
+import { Produto } from '../produto/produto';
+
+import { MatButtonModule } from '@angular/material/button';
+
+@Component({
+  selector: 'app-lista-produtos',
+  imports: [Produto, MatButtonModule],
+  templateUrl: './lista-produtos.html',
+  styleUrl: './lista-produtos.css',
+})
+export class ListaProdutos {
+
+  private produtosService = inject(ProdutosService);
+  carrinhoService = inject(CarrinhoService)
+
+  // Singles
+
+  quantidadeCarrinho = this.carrinhoService.quantidade;
+  totalCarrinho = this.carrinhoService.total;
+
+  // Signals
+
+  produtos = signal<
+    { nome: string; preco: number }[]
+  >([]);
+
+  produtoSelecionado = signal<string | null>(null);
+
+  carregando = signal(true);
+
+  erro = signal<string | null>(null);
+
+  // Computed
+
+  totalProdutos = computed(() => this.produtos().length);
+  valorTotal = computed(() => {
+    return this.produtos().reduce((total, item) => total + item.preco, 0);
+  });
+
+  // Constructor
+
+  constructor() {
+    this.carregarProdutos();
+
+    effect(() => {
+      console.log('Lista de produtos alterada: ', this.produtos());
+    });
+    effect(() => {
+      console.log('Valor total atualizado: ', this.valorTotal());
+    });
+
+    effect(() => {
+      if (typeof document !== 'undefined') {
+        document.title = `(${this.totalProdutos()}) Minha Loja`;
+      }
+    });
+  }
+
+  // Método Http (API)
+
+  carregarProdutos() {
+    this.erro.set(null);
+    this.carregando.set(true);
+
+    this.produtosService.buscarProdutos().subscribe({
+      next: (dados) => {
+        const produtos = this.produtosService.transformarProdutos(dados);
+        this.produtos.set(produtos);
+        this.carregando.set(false);
+      },
+      error: (erro) => {
+        console.error('Erro ao carregar produtos: ', erro);
+        this.erro.set('Erro ao carregar produtos. Verifique sua conexão e tente novamente.');
+        this.carregando.set(false);
+      },
+    });
+  }
+
+  // Métodos
+
+  exibirProduto(nome: string) {
+    this.produtoSelecionado.set(nome);
+  }
+
+  adicionarProduto() {
+    this.produtos.update(listaAtual => [
+      ...listaAtual,
+      { nome: 'Teclado', preco: 259 }
+    ]);
+  }
+
+  substituirProdutos() {
+    this.produtos.set([{ nome: 'Produto Novo', preco: 49 }]);
+  }
+
+  adicionarAoCarrinho(produto: { nome: string; preco: number }) {
+    this.carrinhoService.adicionar(produto);
+  }
+}
