@@ -8,3 +8,8 @@ mat-card {
   flex-direction: column;
   justify-content: space-between;
 }
+
+mat-card-actions button {
+  height: 100%;
+  margin-left: 8px;
+}

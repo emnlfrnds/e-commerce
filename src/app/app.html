@@ -1,13 +1,5 @@
 <app-header></app-header>
 
 <main class="container-principal">
-  <!-- Controle temporario de Login -->
-  <section class="bloco-controle">
-    <button (click)="login()">Login</button>
-    <button (click)="logout()">logout</button>
-    <p>Status: {{ usuarioLogado() ? 'Logado' : 'DesLogado' }}</p>
-  </section>
-
-  <!-- Rotas -->
   <router-outlet></router-outlet>
 </main>
