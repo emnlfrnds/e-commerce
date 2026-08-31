@@ -3,13 +3,13 @@ import { HttpInterceptorFn } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { tap, catchError, throwError } from "rxjs";
 
-import { AuthService } from "../services/auth.service";
+import { AuthFacade } from '../facades/auth.facade';
 
 export const httpInterceptor: HttpInterceptorFn = (req, next) => {
-  const authService = inject(AuthService);
+  const authFacade = inject(AuthFacade);
 
   const router = inject(Router);
-  const token = authService.obterToken();
+  const token = authFacade.obterToken();
 
   // LOG REQUEST
   console.log('REQUEST', req.url);
@@ -34,12 +34,11 @@ export const httpInterceptor: HttpInterceptorFn = (req, next) => {
 
       if (error.status === 401) {
         console.warn('Não autorizado. Faça login novamente.');
-        authService.logout();
+        authFacade.sair();
         router.navigateByUrl('/login');
       }
       if (error.status === 403) {
         console.warn('Acesso proibido. Perfil sem permissão.');
-        authService.logout();
         router.navigateByUrl('/produtos');
       }
       if (error.status === 500) {

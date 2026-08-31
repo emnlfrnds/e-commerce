@@ -1,7 +1,7 @@
 import { Component, signal, computed, effect, inject } from '@angular/core';
 import { ProdutosService } from '../../../core/services/produtos.service';
-import { CarrinhoService } from '../../../core/services/carrinho.service';
-
+import { CarrinhoFacade } from '../../../core/facades/carrinho.facade';
+import { ItemCarrinho } from '../../../core/models/item-carrinho';
 import { Produto } from '../produto/produto';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -15,12 +15,12 @@ import { MatButtonModule } from '@angular/material/button';
 export class ListaProdutos {
 
   private produtosService = inject(ProdutosService);
-  carrinhoService = inject(CarrinhoService)
+  carrinhoFacade = inject(CarrinhoFacade);
 
   // Singles
 
-  quantidadeCarrinho = this.carrinhoService.quantidade;
-  totalCarrinho = this.carrinhoService.total;
+  quantidadeCarrinho = this.carrinhoFacade.quantidade;
+  totalCarrinho = this.carrinhoFacade.total;
 
   // Signals
 
@@ -97,7 +97,7 @@ export class ListaProdutos {
     this.produtos.set([{ nome: 'Produto Novo', preco: 49 }]);
   }
 
-  adicionarAoCarrinho(produto: { nome: string; preco: number }) {
-    this.carrinhoService.adicionar(produto);
+  adicionarAoCarrinho(produto: ItemCarrinho) {
+    this.carrinhoFacade.adicionarProduto(produto);
   }
 }
