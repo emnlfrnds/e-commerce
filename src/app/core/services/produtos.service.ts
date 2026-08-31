@@ -1,6 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 
+import { ProdutoLoja } from '../models/produto-loja';
+
 type ProdutoApi = {
   title: string;
   price: number;
@@ -16,16 +18,17 @@ type Produto = {
 export class ProdutosService {
   private http = inject(HttpClient);
 
-  private API = 'https://fakestoreapi.com/products';
+  private readonly API = 'https://fakestoreapi.com/products';
+  // private readonly API = 'https://fakestoreapi.com/products-erro';
 
   buscarProdutos() {
     return this.http.get<ProdutoApi[]>(this.API);
   }
 
-  transformarProdutos(dados: ProdutoApi[]): Produto[] {
-    return dados.map((p) => ({
-      nome: p.title,
-      preco: p.price,
+  transformarProdutos(dados: ProdutoApi[]): ProdutoLoja[] {
+    return dados.map((produto) => ({
+      nome: produto.title,
+      preco: produto.price,
     }));
   }
 }
